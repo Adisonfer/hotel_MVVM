@@ -1,0 +1,103 @@
+﻿<Window x:Class="hotel_MVVM.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hotel_MVVM.Views"
+        mc:Ignorable="d"
+        Title="LoginWindowView" Height="450" Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/Login/background.png"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="SnowPeak"
+               FontSize="80"
+               Foreground="#503D32"
+               FontFamily="Cinzel"
+               FontWeight="Bold"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <!-- Добавление двух колонок под шапкой -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Margin="15, 25"
+                    CornerRadius="20"
+                    Height="210">
+                <Border.Background>
+                    <SolidColorBrush Color="#f5f5f5" />
+                </Border.Background>
+
+                <StackPanel Margin="10,0">
+                    <TextBlock Text="Log in"
+                               FontSize="30"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Center"
+                               FontFamily="Cinzel"
+                               FontWeight="Bold"/>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Margin="0,5" Height="40">
+                        <Border.Background>
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <TextBox  x:Name="email"
+                                  BorderThickness="0"
+                                  Margin="5,5"
+                                  VerticalAlignment="Center"
+                                  FontSize="16"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Margin="0,5" Height="40">
+                        <Border.Background>
+                            <SolidColorBrush Color="White"/>
+                        </Border.Background>
+                        <PasswordBox  x:Name="password"
+                                  BorderThickness="0"
+                                  Margin="5,5"
+                                  VerticalAlignment="Center"
+                                  FontSize="16"/>
+                    </Border>
+
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="Login"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            VerticalAlignment="Bottom">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#60504B"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4F433E"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="40"
+                                        CornerRadius="10"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
