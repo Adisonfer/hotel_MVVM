@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_MVVM"
         mc:Ignorable="d"
-         Title="BookingWindow" Height="600" Width="800">
+        Title="BookingWindow" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
     <DockPanel Margin="20, 0">
         <Grid>
             <Grid.RowDefinitions>
@@ -46,6 +47,44 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="4, 0" VerticalAlignment="Center">
+                        <DatePicker Name="StartDatePicker"
+                    DisplayDateStart="2023-01-01" 
+                    DisplayDateEnd="2100-01-01"
+                    SelectedDate="{Binding StartDate}" 
+                    DisplayDate="{Binding StartDate}">
+                            <DatePicker.Resources>
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Setter Property="Background" Value="#DDDDDD" />
+                                    <Setter Property="BorderBrush" Value="Gray" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="4, 0" VerticalAlignment="Center">
+                        <DatePicker Name="EndDatePicker" 
+                    DisplayDateStart="2023-01-01"
+                    DisplayDateEnd="2100-01-01"
+                    SelectedDate="{Binding EndDate}"
+                    DisplayDate="{Binding EndDate}">
+                            <DatePicker.Resources>
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Setter Property="Background" Value="#DDDDDD" />
+                                    <Setter Property="BorderBrush" Value="Gray" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </DockPanel>

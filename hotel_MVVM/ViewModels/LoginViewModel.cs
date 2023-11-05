@@ -18,8 +18,8 @@ namespace hotel_MVVM.ViewModels
 
         private void OpenSecondWindow(object p)
         {
-            MainViewModel secondViewModel= new MainViewModel();
             MainWindow mainWindow = new MainWindow();
+            MainViewModel secondViewModel = new MainViewModel(mainWindow);
             mainWindow.DataContext = secondViewModel;
             mainWindow.Show();
 
