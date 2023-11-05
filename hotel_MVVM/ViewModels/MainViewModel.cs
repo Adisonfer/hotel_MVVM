@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace hotel_MVVM.ViewModels
 {
-    internal class MainViewModel : ViewModel
+    public class MainViewModel : ViewModel
     {
     }
 }

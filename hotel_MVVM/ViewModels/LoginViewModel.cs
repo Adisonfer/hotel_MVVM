@@ -1,29 +1,29 @@
-﻿using hotel_MVVM.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using hotel_MVVM.Infrastructure.Commands;
+using hotel_MVVM.ViewModels.Base;
+using System.Windows;
+using System.Windows.Input;
 
 namespace hotel_MVVM.ViewModels
 {
-    internal class LoginViewModel : ViewModel
+    public class LoginViewModel : ViewModel
     {
-        readonly LoginViewModel _loginViewModel = new LoginViewModel();
-        readonly MainViewModel _menuViewModel = new MainViewModel();
+        public ICommand OpenSecondWindowCommand { get; }
+        private Window currentWindow;
 
-        private ViewModel _currentViewModel;
-        public ViewModel CurrentViewModel
+        public LoginViewModel(Window window)
         {
-            get => _currentViewModel;
-            set => Set(ref _currentViewModel, value);
+            currentWindow = window;
+            OpenSecondWindowCommand = new RelayCommand(OpenSecondWindow);
         }
 
-        //Just for test
-        public void switchView()
+        private void OpenSecondWindow(object p)
         {
-            if (CurrentViewModel == _loginViewModel) { CurrentViewModel = _menuViewModel; }
-            else { CurrentViewModel = _loginViewModel; }
+            MainViewModel secondViewModel= new MainViewModel();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.DataContext = secondViewModel;
+            mainWindow.Show();
+
+            currentWindow.Close();
         }
     }
 }

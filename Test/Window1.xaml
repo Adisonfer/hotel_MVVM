@@ -7,16 +7,8 @@
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
+    
     <Grid>
-        <ContentPresenter Content="{Binding CurrentViewModel}">
-            <ContentPresenter.Resources>
-                <DataTemplate  DataType="{x:Type VM:LoginViewModel}">
-                    <local:LoginView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type VM:MainViewModel}">
-                    <local:MenuView />
-                </DataTemplate>
-            </ContentPresenter.Resources>
-        </ContentPresenter>
+       
     </Grid>
 </Window>

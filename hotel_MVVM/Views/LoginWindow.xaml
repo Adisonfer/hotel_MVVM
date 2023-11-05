@@ -4,15 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_MVVM.Views"
-        xmlns:vm="clr-namespace:hotel_MVVM.ViewModels"
         mc:Ignorable="d"
         Title="LoginWindowView" Height="450" Width="700"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
-    <Window.DataContext>
-        <vm:LoginViewModel/>
-    </Window.DataContext>
-    
+
     <Window.Background>
         <ImageBrush ImageSource="/Images/Login/background.png"/>
     </Window.Background>
@@ -78,7 +74,8 @@
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"
-                            VerticalAlignment="Bottom">
+                            VerticalAlignment="Bottom"
+                            Command="{Binding OpenSecondWindowCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#60504B"/>

@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ContentPresenter Content="{Binding CurrentViewModel}">
+            <ContentPresenter.Resources>
+                <DataTemplate  DataType="{x:Type VM:LoginViewModel}">
+                    <local:LoginView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type VM:MenuViewModel}">
+                    <local:MenuView />
+                </DataTemplate>
+            </ContentPresenter.Resources>
+        </ContentPresenter>
     </Grid>
 </Window>

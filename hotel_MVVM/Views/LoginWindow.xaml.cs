@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hotel_MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace hotel_MVVM.Views
         public LoginWindow()
         {
             InitializeComponent();
+            var loginViewModel = new LoginViewModel(this);
+            this.DataContext = loginViewModel;
         }
     }
 }
