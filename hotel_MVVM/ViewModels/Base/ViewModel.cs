@@ -11,6 +11,7 @@ namespace hotel_MVVM.ViewModels.Base
     public class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public event Action OpenNextWindowRequested;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
         {

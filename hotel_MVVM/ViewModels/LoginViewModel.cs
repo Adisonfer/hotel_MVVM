@@ -1,4 +1,5 @@
 ﻿using hotel_MVVM.Infrastructure.Commands;
+using hotel_MVVM.Infrastructure.Services.Interfaces;
 using hotel_MVVM.ViewModels.Base;
 using System.Windows;
 using System.Windows.Input;
@@ -7,23 +8,19 @@ namespace hotel_MVVM.ViewModels
 {
     public class LoginViewModel : ViewModel
     {
-        public ICommand OpenSecondWindowCommand { get; }
-        private Window currentWindow;
+        public ICommand OpenNextWindowCommand { get; }
 
-        public LoginViewModel(Window window)
+        private readonly INavigationService navigationService;
+
+        public LoginViewModel(INavigationService navigationService)
         {
-            currentWindow = window;
-            OpenSecondWindowCommand = new RelayCommand(OpenSecondWindow);
+            this.navigationService = navigationService;
+            OpenNextWindowCommand = new RelayCommand(OpenNextWindow);
         }
 
-        private void OpenSecondWindow(object p)
+        private void OpenNextWindow(object parameter)
         {
-            MainWindow mainWindow = new MainWindow();
-            MainViewModel secondViewModel = new MainViewModel(mainWindow);
-            mainWindow.DataContext = secondViewModel;
-            mainWindow.Show();
-
-            currentWindow.Close();
+            navigationService.OpenNextWindow();
         }
     }
 }

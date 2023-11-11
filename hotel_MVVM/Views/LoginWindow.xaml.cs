@@ -1,30 +1,33 @@
-﻿using hotel_MVVM.ViewModels;
+﻿using hotel_MVVM.Infrastructure.Services.Interfaces;
+using hotel_MVVM.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace hotel_MVVM.Views
 {
     /// <summary>
     /// Логика взаимодействия для LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : Window, INavigationService
     {
+        private LoginViewModel viewModel;
+
         public LoginWindow()
         {
             InitializeComponent();
-            var loginViewModel = new LoginViewModel(this);
-            this.DataContext = loginViewModel;
+            viewModel = new LoginViewModel(this);
+            DataContext = viewModel;
+        }
+
+        public void OpenNextWindow()
+        {
+            MainWindow mainWindow = new MainWindow();
+            MainViewModel secondViewModel = new MainViewModel(mainWindow);
+            mainWindow.DataContext = secondViewModel;
+            mainWindow.Show();
+
+            this.Close();
         }
     }
 }

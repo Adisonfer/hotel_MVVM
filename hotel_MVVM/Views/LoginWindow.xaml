@@ -75,7 +75,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             VerticalAlignment="Bottom"
-                            Command="{Binding OpenSecondWindowCommand}">
+                            Command="{Binding OpenNextWindowCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#60504B"/>
