@@ -1,9 +1,5 @@
 ﻿using hotel_MVVM.ViewModels.Base;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace hotel_MVVM.ViewModels
@@ -16,6 +12,8 @@ namespace hotel_MVVM.ViewModels
 
         public MainViewModel(Window window)
         {
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
             _currentWindow = window;
         }
     }
