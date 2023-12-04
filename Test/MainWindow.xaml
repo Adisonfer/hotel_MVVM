@@ -7,15 +7,36 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ContentPresenter Content="{Binding CurrentViewModel}">
-            <ContentPresenter.Resources>
-                <DataTemplate  DataType="{x:Type VM:LoginViewModel}">
-                    <local:LoginView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type VM:MenuViewModel}">
-                    <local:MenuView />
-                </DataTemplate>
-            </ContentPresenter.Resources>
-        </ContentPresenter>
+        <ScrollViewer>
+                    <StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <Grid Height="150" Cursor="Hand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="Images/Rooms/room1.png" Height="150" HorizontalAlignment="Left"/>
+
+                                <StackPanel Grid.Column="2" Cursor="Hand">
+                                    <Label Content="LUX ApARTAMENT 10 IZ 5 TOP"
+                                           HorizontalAlignment="Right" Margin="5"
+                                           FontSize="20"
+                                           FontFamily="Montserrat"/>
+                                    <Label Content="Person 3"
+                                           HorizontalAlignment="Right" Margin="5"
+                                           FontSize="20"
+                                           FontFamily="Montserrat"/>
+
+                                    <Button Grid.Column="1" Content="Book"
+                                            Width="130"
+                                            Height="40"
+                                            FontSize="18"/>
+
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
     </Grid>
 </Window>
