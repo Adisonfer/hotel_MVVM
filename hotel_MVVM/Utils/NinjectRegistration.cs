@@ -1,4 +1,8 @@
-﻿using Ninject.Modules;
+﻿using DAL.Repository;
+using BLL.Services;
+using Intarfaces.Repository;
+using Interfaces.Services;
+using Ninject.Modules;
 
 namespace hotel_MVVM.Utils
 {
@@ -6,9 +10,7 @@ namespace hotel_MVVM.Utils
     {
         public override void Load()
         {
-            //Bind<IDbRepos>().To<DbReposSQL>();
-            //Bind<IApplicantService>().To<ApplicantService>();
-
+            Bind<IRoomService>().To<RoomService>();
         }
     }
 }

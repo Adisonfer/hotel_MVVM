@@ -127,7 +127,9 @@
                     <ListBox ItemsSource="{Binding Rooms}" HorizontalContentAlignment="Stretch">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Stretch">
+                                <Border BorderBrush="Black" 
+                                        BorderThickness="1"
+                                        HorizontalAlignment="Stretch">
                                     <Grid Height="150" Cursor="Hand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="300"/>
@@ -138,19 +140,23 @@
 
                                         <StackPanel Grid.Column="2" Cursor="Hand">
                                             <Label Content="{Binding RoomName}"
-                                       HorizontalAlignment="Right" Margin="5"
-                                       FontSize="20"
-                                       FontFamily="Montserrat"/>
-                                            <Label Content="{Binding Place}"
-                                       HorizontalAlignment="Right" Margin="5"
-                                       FontSize="20"
-                                       FontFamily="Montserrat"/>
+                                                   HorizontalAlignment="Right" Margin="2"
+                                                   FontSize="20"
+                                                   FontFamily="Montserrat"/>
+                                            <Label Content="{Binding NumberPlaces}"
+                                                   HorizontalAlignment="Right" Margin="2"
+                                                   FontSize="20"
+                                                   FontFamily="Montserrat"/>
+                                            <Label Content="{Binding Price}"
+                                                   HorizontalAlignment="Right" Margin="2"
+                                                   FontSize="20"
+                                                   FontFamily="Montserrat"/>
 
                                             <Button Style="{StaticResource CustomButtonStyle}" Content="Book"
-                                        Width="130"
-                                        Height="40"
-                                        FontSize="18"
-                                        HorizontalAlignment="Right"/>
+                                                    Width="170"
+                                                    Height="25"
+                                                    FontSize="18"
+                                                    HorizontalAlignment="Right"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>

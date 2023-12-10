@@ -1,4 +1,7 @@
-﻿using hotel_MVVM.ViewModels;
+﻿using hotel_MVVM.Utils;
+using hotel_MVVM.ViewModels;
+using Interfaces.Services;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +24,11 @@ namespace hotel_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(IRoomService roomService)
         {
             InitializeComponent();
-            var loginViewModel = new MainViewModel(this);
+
+            var loginViewModel = new MainViewModel(this, roomService);
             this.DataContext = loginViewModel;
         }
     }

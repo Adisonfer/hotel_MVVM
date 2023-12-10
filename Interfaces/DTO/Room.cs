@@ -10,6 +10,7 @@ namespace Interfaces.DTO
         public double Price { get; set; }
         public string Description { get; set; }
         public int Photo_Id { get; set; }
+        public string ImagePath { get; set; } 
 
         public RoomDTO() { }
         public RoomDTO(Room room)
@@ -20,6 +21,7 @@ namespace Interfaces.DTO
             Price = room.Price;
             Description = room.Description;
             Photo_Id = room.Photo_Id;
+            ImagePath = "/Images/Rooms/room" + room.Photo_Id.ToString() + ".png";
         }
     }
 }

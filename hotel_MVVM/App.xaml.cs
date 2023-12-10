@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using hotel_MVVM.Utils;
+using hotel_MVVM.Views;
+using Interfaces.Services;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,10 +17,16 @@ namespace hotel_MVVM
     /// </summary>
     public partial class App : Application
     {
-        private void App_Startup(object sender, StartupEventArgs e)
+        private static IKernel _kernel;
+
+        protected override void OnStartup(StartupEventArgs e)
         {
-            IKernel kernel = new StandardKernel();
-            
+            base.OnStartup(e);
+
+            // Инициализация ядра Ninject при запуске приложения
+            _kernel = new StandardKernel(new NinjectRegistrations(), new ReposModule("DataContext"));
         }
+
+        public static IKernel Kernel => _kernel;
     }
 }

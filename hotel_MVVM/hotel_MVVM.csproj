@@ -94,6 +94,7 @@
     <Compile Include="Infrastructure\Services\Interfaces\INavigationService.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Utils\NinjectRegistration.cs" />
+    <Compile Include="Utils\ReposModule.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -141,6 +142,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Rooms\room1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{961f089b-7bc3-437c-9c87-1191e7833e83}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{D6E546A1-F37B-457D-BC76-F94D144D7006}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{459F9215-ED3C-4FF7-850D-9049AB658DFC}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Rooms\room2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Rooms\room3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

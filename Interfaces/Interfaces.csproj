@@ -49,6 +49,7 @@
     <Compile Include="Repository\IDbRepos.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Services\IBookingService.cs" />
+    <Compile Include="Services\IFreeRooms.cs" />
     <Compile Include="Services\IRoomService.cs" />
   </ItemGroup>
   <ItemGroup />

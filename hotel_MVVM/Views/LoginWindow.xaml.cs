@@ -1,5 +1,8 @@
 ﻿using hotel_MVVM.Infrastructure.Services.Interfaces;
+using hotel_MVVM.Utils;
 using hotel_MVVM.ViewModels;
+using Interfaces.Services;
+using Ninject;
 using System;
 using System.Windows;
 
@@ -22,11 +25,11 @@ namespace hotel_MVVM.Views
 
         public void OpenNextWindow()
         {
-            MainWindow mainWindow = new MainWindow();
-            MainViewModel secondViewModel = new MainViewModel(mainWindow);
-            mainWindow.DataContext = secondViewModel;
-            mainWindow.Show();
+            IRoomService roomService = App.Kernel.Get<IRoomService>();
 
+            MainWindow mainWindow = new MainWindow(roomService);
+
+            mainWindow.Show();
             this.Close();
         }
     }

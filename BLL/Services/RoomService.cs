@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BLL.Services
 {
-    internal class RoomService : IRoomService
+    public class RoomService : IRoomService
     {
         private IDbRepos db;
         public RoomService(IDbRepos db)
