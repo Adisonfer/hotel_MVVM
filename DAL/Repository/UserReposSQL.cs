@@ -1,6 +1,8 @@
 ﻿using DomainModel;
 using Intarfaces.Repository;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace DAL.Repository
 {
@@ -24,12 +26,12 @@ namespace DAL.Repository
 
         public User GetItem(int id)
         {
-            throw new System.NotImplementedException();
+            return db.User.Find(id);
         }
 
         public List<User> GetList()
         {
-            throw new System.NotImplementedException();
+            return db.User.ToList();
         }
 
         public void Update(User item)

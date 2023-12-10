@@ -1,14 +1,11 @@
 ﻿using Interfaces.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interfaces.Services
 {
     public interface IUserService
     {
-        List<UserDTO> GetUsers();
+        List<UserDTO> GetAllUsers();
+        UserDTO GetUser(int id);
     }
 }

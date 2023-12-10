@@ -1,17 +1,16 @@
 ﻿using DomainModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interfaces.DTO
 {
     public class AdminDTO
     {
+        public int ID { get; set; }
+        public int UserID { get; set; }
+
         public AdminDTO() { }
         public AdminDTO(Administrator ad) {
-        
+            ID = ad.ID;
+            UserID = ad.UserID;
         }
     }
 }

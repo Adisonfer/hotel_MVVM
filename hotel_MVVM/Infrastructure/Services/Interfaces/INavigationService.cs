@@ -8,6 +8,6 @@ namespace hotel_MVVM.Infrastructure.Services.Interfaces
 {
     public interface INavigationService
     {
-        void OpenNextWindow();
+        void OpenNextWindow(bool admin);
     }
 }

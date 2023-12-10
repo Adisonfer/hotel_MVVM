@@ -8,6 +8,8 @@ namespace DAL.Repository
         private DataContext db;
         private UserReposSQL userRepos;
         private RoomReposSQL roomRepos;
+        private ClientReposSQL clientRepos;
+        private AdminReposSQL adminRepos;
 
         public DbReposSQL()
         {
@@ -29,6 +31,27 @@ namespace DAL.Repository
                 if (roomRepos == null)
                     roomRepos = new RoomReposSQL(db);
                 return roomRepos;
+            }
+        }
+
+        public IRepository<Client> Clients
+        {
+            get
+            {
+                if (clientRepos == null)
+                    clientRepos = new ClientReposSQL(db);
+                return clientRepos;
+            }
+        }
+
+
+        public IRepository<Administrator> Administrators
+        {
+            get
+            {
+                if (adminRepos == null)
+                    adminRepos = new AdminReposSQL(db);
+                return adminRepos;
             }
         }
         public void Save()

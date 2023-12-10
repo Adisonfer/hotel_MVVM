@@ -54,20 +54,22 @@
                                   BorderThickness="0"
                                   Margin="5,5"
                                   VerticalAlignment="Center"
-                                  FontSize="16"/>
+                                  FontSize="16"
+                                  Text="{Binding Path=Login}"/>
                     </Border>
                     <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="10" Margin="0,5" Height="40">
                         <Border.Background>
                             <SolidColorBrush Color="White"/>
                         </Border.Background>
-                        <PasswordBox  x:Name="password"
+                        <TextBox  x:Name="password"
                                   BorderThickness="0"
                                   Margin="5,5"
                                   VerticalAlignment="Center"
-                                  FontSize="16"/>
+                                  FontSize="16"
+                                  Text="{Binding Path=Password}"/>
                     </Border>
 
-                    <Button x:Name="btnClose"                          
+                    <Button x:Name="btnLogin"                          
                             BorderThickness="0"
                             Content="Login"
                             Foreground="White"

@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Interfaces.DTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Interfaces.Services
 {
-    internal interface IAdminService
+    public interface IAdminService
     {
+        List<AdminDTO> GetAllAdmins();
     }
 }

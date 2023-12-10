@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hotel_MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace Test
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
+        }
+
+        private void NumbersButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Изменяем контент на "Номера"
+            (DataContext as MainViewModel)?.ShowNumbers();
+        }
+
+        private void ReservationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Изменяем контент на "Бронирования"
+            (DataContext as MainViewModel)?.ShowReservations();
         }
     }
+
 }

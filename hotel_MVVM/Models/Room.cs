@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace hotel_MVVM.Models
 {
-    public class Room
+    public class RoomModel
     {
         public string RoomName { get; set; }
         public string ImagePath { get; set; }
-        public int Place { get; set; }
-        public float Price { get; set; }
+        public string NumberPlaces { get; set; }
+        public string Price { get; set; }
     }
 }

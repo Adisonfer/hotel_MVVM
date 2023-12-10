@@ -28,7 +28,7 @@ namespace hotel_MVVM
         {
             InitializeComponent();
 
-            var loginViewModel = new MainViewModel(this, roomService);
+            var loginViewModel = new MainViewModel(roomService);
             this.DataContext = loginViewModel;
         }
     }

@@ -36,6 +36,10 @@
         <TabControl>
             <TabItem Header="Номера">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox ItemsSource="{Binding Rooms}" HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using hotel_MVVM.ViewModels;
+using Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,11 @@ namespace hotel_MVVM.Views
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow()
+        public AdminWindow(IRoomService roomService)
         {
             InitializeComponent();
+            var loginViewModel = new MainViewModel(roomService);
+            this.DataContext = loginViewModel;
         }
     }
 }

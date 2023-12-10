@@ -9,6 +9,6 @@ namespace Interfaces.Services
 {
     public interface IClientService
     {
-        List<ClientDTO> GetClients { get; }
+        List<ClientDTO> GetAllClients();
     }
 }

@@ -1,36 +1,47 @@
-﻿using hotel_MVVM.ViewModels.Base;
+﻿using hotel_MVVM.Models;
+using hotel_MVVM.ViewModels.Base;
 using Interfaces.DTO;
 using Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace hotel_MVVM.ViewModels
 {
     public class MainViewModel : ViewModel
     {
-        private Window _currentWindow;
-        private List<RoomDTO> rooms;
+        private List<RoomModel> _rooms;
         private readonly IRoomService _roomService;
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public List<RoomDTO> Rooms
+        public List<RoomModel> Rooms
         {
-            get => _roomService.GetAllRooms();
+            get => ConvertDataRoomView(_roomService.GetAllRooms());
             set
             {
-                if (!Set(ref rooms, value)) return;
+                if (!Set(ref _rooms, value)) return;
             }
         }
 
-        public MainViewModel(Window window, IRoomService roomService)
+        public MainViewModel(IRoomService roomService)
         {
             _roomService = roomService;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
-            _currentWindow = window;
+        }
+
+        private List<RoomModel> ConvertDataRoomView(List<RoomDTO> rooms)
+        {
+            return rooms.Select(i => new RoomModel
+            {
+                RoomName = i.RoomName.ToString(),
+                Price = i.Price.ToString() + "$",
+                NumberPlaces = "Place: " + i.NumberPlaces,
+                ImagePath = i.ImagePath
+            }).ToList();
         }
     }
 }
