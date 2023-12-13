@@ -1,4 +1,5 @@
-﻿using hotel_MVVM.ViewModels;
+﻿using hotel_MVVM.Infrastructure.Services.Interfaces;
+using hotel_MVVM.ViewModels;
 using Interfaces.Services;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,15 @@ namespace hotel_MVVM.Views
         public AdminWindow(IRoomService roomService)
         {
             InitializeComponent();
-            var loginViewModel = new MainViewModel(roomService);
-            this.DataContext = loginViewModel;
+            AdminViewWindow adminViewModel = new AdminViewWindow(roomService);
+            this.DataContext = adminViewModel;
+        }
+
+        private void btn_CreateWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AddAdminWindow addAdmin = new AddAdminWindow();
+            addAdmin.Owner = this;
+            addAdmin.ShowDialog();
         }
     }
 }
