@@ -1,5 +1,4 @@
-﻿using hotel_MVVM.Infrastructure.Services.Interfaces;
-using hotel_MVVM.Models;
+﻿using hotel_MVVM.Models;
 using hotel_MVVM.ViewModels.Base;
 using Interfaces.DTO;
 using Interfaces.Services;

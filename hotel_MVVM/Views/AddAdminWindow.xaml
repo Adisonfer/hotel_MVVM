@@ -7,9 +7,61 @@
         mc:Ignorable="d"
         Title="AddAdminWindow" Height="450" Width="800">
     <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок -->
+            <TextBlock Text="Добавить комнату" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+
+            <!-- Форма добавления комнаты -->
+            <StackPanel Grid.Row="1" Margin="20">
+                <!-- Изображение комнаты -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Изображение:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <Button Content="Выбрать изображение"  Command="{Binding AddImageCommand}"/>
+                </StackPanel>
+
+                <!-- Название комнаты -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Название комнаты:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding Path=RoomName}" Width="200"/>
+                </StackPanel>
+
+                <!-- Количество человек -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Количество человек:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox SelectedItem="{Binding RoomPlace, Mode=TwoWay}" Width="100">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Стоимость -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Стоимость:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding Path=RoomPrice}" Width="100"/>
+                </StackPanel>
+
+                <!-- Описание -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Описание:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBox Text="{Binding Path=RoomDesc}" Width="300" Height="100" TextWrapping="Wrap"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Кнопка отправки в базу данных -->
+            <Button Grid.Row="2" Content="Добавить комнату"  Command="{Binding AddRoomCommand}"
+                    HorizontalAlignment="Center" Margin="0,10"/>
+        </Grid>
         <StackPanel>
-            <Image Name="selectedImage" Width="200" Height="200" Margin="0,0,0,10"/>
-            <Button Content="Добавить изображение" Click="AddImage_Click" Margin="0,0,0,10"/>
+            <Image Source="{Binding SelectedImageSource}" Width="300" Height="200" Margin="10,10,10,10" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </Window>

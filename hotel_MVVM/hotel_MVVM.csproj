@@ -99,7 +99,6 @@
     </Compile>
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
-    <Compile Include="Infrastructure\Services\Interfaces\INavigationService.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Utils\NinjectRegistration.cs" />
     <Compile Include="Utils\ReposModule.cs" />
@@ -150,6 +149,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Infrastructure\Services\Interfaces\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

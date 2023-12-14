@@ -1,5 +1,4 @@
-﻿using hotel_MVVM.Infrastructure.Services.Interfaces;
-using hotel_MVVM.ViewModels;
+﻿using hotel_MVVM.ViewModels;
 using Interfaces.Services;
 using System;
 using System.Collections.Generic;

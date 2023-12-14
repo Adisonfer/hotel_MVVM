@@ -1,6 +1,6 @@
 ﻿using hotel_MVVM.Infrastructure.Commands;
-using hotel_MVVM.Infrastructure.Services.Interfaces;
 using hotel_MVVM.ViewModels.Base;
+using hotel_MVVM.Views;
 using Interfaces.DTO;
 using Interfaces.Services;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace hotel_MVVM.ViewModels
 {
     public class LoginViewModel : ViewModel
     {
-        private readonly INavigationService navigationService;
+        private readonly LoginWindow _window;
         private readonly IUserService _userService;
         private readonly IClientService _clientService;
         private readonly IAdminService _adminService;
@@ -38,10 +38,10 @@ namespace hotel_MVVM.ViewModels
             }
         }
 
-        public LoginViewModel(INavigationService navigationService, IUserService userService,
+        public LoginViewModel(LoginWindow wnd, IUserService userService,
             IClientService clientService, IAdminService adminService)
         {
-            this.navigationService = navigationService;
+            _window = wnd;
             _userService = userService;
             _clientService = clientService;
             _adminService = adminService;
@@ -62,13 +62,13 @@ namespace hotel_MVVM.ViewModels
                     {
                         if (client.UserID == user.ID)
                         {
-                            navigationService.OpenNextWindow(false);
+                            _window.OpenNextWindow(false);
                             break;
                         }
                     }
                     foreach (AdminDTO admin in admins)
                     {
-                        if (admin.UserID == user.ID) { navigationService.OpenNextWindow(true); break; }
+                        if (admin.UserID == user.ID) { _window.OpenNextWindow(true); break; }
                     }
                     break;
                 }
