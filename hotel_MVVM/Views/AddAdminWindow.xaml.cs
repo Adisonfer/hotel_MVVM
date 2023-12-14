@@ -1,5 +1,7 @@
 ﻿using hotel_MVVM.ViewModels;
+using Interfaces.Services;
 using Microsoft.Win32;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,10 +26,12 @@ namespace hotel_MVVM.Views
     public partial class AddAdminWindow : Window
     {
         private AddRoomViewModel viewModel;
+        IRoomService roomService = App.Kernel.Get<IRoomService>();
+
         public AddAdminWindow()
         {
             InitializeComponent();
-            viewModel = new AddRoomViewModel();
+            viewModel = new AddRoomViewModel(this, roomService);
             DataContext = viewModel; 
         }
     }

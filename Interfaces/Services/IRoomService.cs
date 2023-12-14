@@ -7,5 +7,6 @@ namespace Interfaces.Services
     public interface IRoomService
     {
         List<RoomDTO> GetAllRooms();
+        void CreateRoom(RoomDTO roomDTO);
     }
 }

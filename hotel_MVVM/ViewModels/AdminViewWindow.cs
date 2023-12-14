@@ -31,15 +31,14 @@ namespace hotel_MVVM.ViewModels
             }
         }
 
+        public void UpdateData()
+        {
+            Rooms = ConvertDataRoomView(_roomService.GetAllRooms());
+        }
+
         private List<RoomModel> ConvertDataRoomView(List<RoomDTO> rooms)
         {
-            return rooms.Select(i => new RoomModel
-            {
-                RoomName = i.RoomName.ToString(),
-                Price = i.Price.ToString() + "$",
-                NumberPlaces = "Place: " + i.NumberPlaces,
-                ImagePath = i.ImagePath
-            }).ToList();
+            return rooms.Select(i => new RoomModel(i)).ToList();
         }
     }
 }

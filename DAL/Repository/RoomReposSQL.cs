@@ -18,7 +18,7 @@ namespace DAL.Repository
 
         public void Create(Room item)
         {
-            throw new NotImplementedException();
+            db.Room.Add(item);
         }
 
         public void Delete(int id)

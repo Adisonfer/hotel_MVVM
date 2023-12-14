@@ -9,8 +9,9 @@ namespace Interfaces.DTO
         public int? NumberPlaces { get; set; }
         public double Price { get; set; }
         public string Description { get; set; }
-        public int Photo_Id { get; set; }
+        public string Photo_Path { get; set; }
         public string ImagePath { get; set; } 
+        public bool Availability { get; set; }
 
         public RoomDTO() { }
         public RoomDTO(Room room)
@@ -20,8 +21,8 @@ namespace Interfaces.DTO
             NumberPlaces = room.NumberPlaces;
             Price = room.Price;
             Description = room.Description;
-            Photo_Id = room.Photo_Id;
-            ImagePath = "/Images/Rooms/room" + room.Photo_Id.ToString() + ".png";
+            Photo_Path = room.Photo_Path;
+            Availability = room.Availability;
         }
     }
 }

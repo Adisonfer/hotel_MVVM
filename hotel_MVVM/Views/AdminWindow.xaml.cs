@@ -21,10 +21,11 @@ namespace hotel_MVVM.Views
     /// </summary>
     public partial class AdminWindow : Window
     {
+        AdminViewWindow adminViewModel;
         public AdminWindow(IRoomService roomService)
         {
             InitializeComponent();
-            AdminViewWindow adminViewModel = new AdminViewWindow(roomService);
+            adminViewModel = new AdminViewWindow(roomService);
             this.DataContext = adminViewModel;
         }
 
@@ -32,7 +33,8 @@ namespace hotel_MVVM.Views
         {
             AddAdminWindow addAdmin = new AddAdminWindow();
             addAdmin.Owner = this;
-            addAdmin.ShowDialog();
+            addAdmin.ShowDialog(); // Открывает окно и ждет, пока оно не будет закрыто
+            adminViewModel.UpdateData();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace DomainModel
 
         public string Description { get; set; }
 
-        public int Photo_Id { get; set; }
+        public string Photo_Path { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Booking { get; set; }
