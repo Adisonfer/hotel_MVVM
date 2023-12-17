@@ -12,6 +12,7 @@ namespace DomainModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Booking()
         {
+            BookingService = new HashSet<BookingService>();
             Review = new HashSet<Review>();
         }
 
@@ -29,8 +30,6 @@ namespace DomainModel
 
         public int? PaymentStatusID { get; set; }
 
-        public int? ServiceID { get; set; }
-
         public int? AdministratorID { get; set; }
 
         public virtual Administrator Administrator { get; set; }
@@ -41,7 +40,8 @@ namespace DomainModel
 
         public virtual PaymentStatus PaymentStatus { get; set; }
 
-        public virtual Service Service { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BookingService> BookingService { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }

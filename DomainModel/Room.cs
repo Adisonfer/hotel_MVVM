@@ -20,15 +20,16 @@ namespace DomainModel
         [StringLength(50)]
         public string RoomName { get; set; }
 
-        public int? NumberPlaces { get; set; }
+        public int? Capacity { get; set; }
 
         public double Price { get; set; }
 
-        public bool Availability { get; set; }
+        public bool? Availability { get; set; }
 
         public string Description { get; set; }
 
-        public string Photo_Path { get; set; }
+        [StringLength(50)]
+        public string PhotoName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Booking { get; set; }

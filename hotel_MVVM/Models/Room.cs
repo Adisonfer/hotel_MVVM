@@ -11,8 +11,8 @@ namespace hotel_MVVM.Models
     public class RoomModel
     {
         public string RoomName { get; set; }
-        public string Photo_Path { get; set; }
-        public string NumberPlaces { get; set; }
+        public string PhotoName { get; set; }
+        public string Capacity { get; set; }
         public string Price { get; set; }
         public string Description { get; set; }
 
@@ -21,8 +21,8 @@ namespace hotel_MVVM.Models
             string imagesFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
 
             RoomName = room.RoomName;
-            Photo_Path = imagesFolder + '/' + room.Photo_Path;
-            NumberPlaces = "Количество мест: " + room.NumberPlaces.ToString();
+            PhotoName = imagesFolder + '/' + room.PhotoName;
+            Capacity = "Количество мест: " + room.Capacity.ToString();
             Price = "Стоимость: " + room.Price.ToString() + "$";
             Description = room.Description;
         }

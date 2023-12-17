@@ -21,8 +21,8 @@ namespace BLL.Services
                 RoomName = roomDTO.RoomName, 
                 Price = roomDTO.Price,
                 Description = roomDTO.Description,
-                NumberPlaces = roomDTO.NumberPlaces,
-                Photo_Path = roomDTO.Photo_Path,
+                Capacity = roomDTO.Capacity,
+                PhotoName = roomDTO.PhotoName,
                 Availability = true,
             });
             db.Save();

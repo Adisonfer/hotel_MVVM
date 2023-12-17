@@ -11,7 +11,6 @@ namespace Interfaces.DTO
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public int? PaymentStatusID { get; set; }
-        public int? ServiceID { get; set; }
         public int? AdministratorID { get; set; }
 
         public BookingDTO() { }
@@ -23,7 +22,6 @@ namespace Interfaces.DTO
             CheckInDate = booking.CheckInDate;
             CheckOutDate = booking.CheckOutDate;
             PaymentStatusID = booking.PaymentStatusID;
-            ServiceID = booking.ServiceID;
             AdministratorID = booking.AdministratorID;
         }
     }

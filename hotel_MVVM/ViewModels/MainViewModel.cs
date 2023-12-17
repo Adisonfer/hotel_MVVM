@@ -1,4 +1,5 @@
-﻿using hotel_MVVM.Models;
+﻿using hotel_MVVM.Infrastructure.Commands;
+using hotel_MVVM.Models;
 using hotel_MVVM.ViewModels.Base;
 using Interfaces.DTO;
 using Interfaces.Services;
@@ -6,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace hotel_MVVM.ViewModels
 {
@@ -13,6 +16,7 @@ namespace hotel_MVVM.ViewModels
     {
         private List<RoomModel> _rooms;
         private readonly IRoomService _roomService;
+        public ICommand BookCommand { get; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -31,11 +35,19 @@ namespace hotel_MVVM.ViewModels
             _roomService = roomService;
             StartDate = DateTime.Now;
             EndDate = DateTime.Now;
+            BookCommand = new RelayCommand(OnBook);
         }
 
         private List<RoomModel> ConvertDataRoomView(List<RoomDTO> rooms)
         {
             return rooms.Select(i => new RoomModel(i)).ToList();
         }
+
+        private void OnBook(object parameter)
+        {
+            int roomId = (int)parameter;
+
+        }
+
     }
 }

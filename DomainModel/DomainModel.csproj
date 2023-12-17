@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Administrator.cs" />
     <Compile Include="Booking.cs" />
+    <Compile Include="BookingService.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="PaymentStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

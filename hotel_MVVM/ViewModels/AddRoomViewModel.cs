@@ -31,7 +31,7 @@ namespace hotel_MVVM.ViewModels
         private string _roomName;
         private string _roomPrice;
         private string _roomDescription;
-        private int _roomPlace;
+        private int _roomCapacity;
 
         public AddRoomViewModel(AddAdminWindow window, IRoomService roomService)
         {
@@ -63,12 +63,12 @@ namespace hotel_MVVM.ViewModels
                 if (!Set(ref _roomDescription, value)) return;
             }
         }
-        public int RoomPlace
+        public int RoomCapacity
         {
-            get => _roomPlace;
+            get => _roomCapacity;
             set
             {
-                if (!Set(ref _roomPlace, value)) return;
+                if (!Set(ref _roomCapacity, value)) return;
             }
         }
 
@@ -141,15 +141,15 @@ namespace hotel_MVVM.ViewModels
             if (SelectedImageSource != null)
                 SaveImage();
             if (string.IsNullOrWhiteSpace(RoomName) || roomPrice<=0 ||
-                 string.IsNullOrWhiteSpace(RoomDesc) || RoomPlace <= 0)
+                 string.IsNullOrWhiteSpace(RoomDesc) || RoomCapacity <= 0)
             {
                 MessageBox.Show("Заполните все поля", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return; // Прерываем сохранение данных
             }
             RoomDTO roomDTO = new RoomDTO();
             roomDTO.RoomName = RoomName;
-            roomDTO.Photo_Path = _nameImage;
-            roomDTO.NumberPlaces = RoomPlace;
+            roomDTO.PhotoName = _nameImage;
+            roomDTO.Capacity = RoomCapacity;
             roomDTO.Price = roomPrice;
             roomDTO.Description = RoomDesc;
             _roomService.CreateRoom(roomDTO);

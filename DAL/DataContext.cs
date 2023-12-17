@@ -15,6 +15,7 @@ namespace DAL
 
         public virtual DbSet<Administrator> Administrator { get; set; }
         public virtual DbSet<Booking> Booking { get; set; }
+        public virtual DbSet<BookingService> BookingService { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<PaymentStatus> PaymentStatus { get; set; }
         public virtual DbSet<Review> Review { get; set; }
@@ -24,6 +25,11 @@ namespace DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Booking>()
+                .HasMany(e => e.BookingService)
+                .WithRequired(e => e.Booking)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Booking>()
                 .HasMany(e => e.Review)
                 .WithRequired(e => e.Booking)
@@ -64,6 +70,10 @@ namespace DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<Room>()
+                .Property(e => e.PhotoName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Room>()
                 .HasMany(e => e.Booking)
                 .WithRequired(e => e.Room)
                 .WillCascadeOnDelete(false);
@@ -71,6 +81,11 @@ namespace DAL
             modelBuilder.Entity<Service>()
                 .Property(e => e.ServiceName)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Service>()
+                .HasMany(e => e.BookingService)
+                .WithRequired(e => e.Service)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Login)
