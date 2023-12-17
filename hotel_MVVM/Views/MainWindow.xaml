@@ -136,7 +136,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Image Source="{Binding ImagePath}" Height="150" HorizontalAlignment="Left"/>
+                                        <Image Source="{Binding Photo_Path}" Height="150" HorizontalAlignment="Left"/>
 
                                         <StackPanel Grid.Column="2" Cursor="Hand">
                                             <Label Content="{Binding RoomName}"

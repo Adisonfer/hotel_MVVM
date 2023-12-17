@@ -22,8 +22,8 @@ namespace hotel_MVVM.Models
 
             RoomName = room.RoomName;
             Photo_Path = imagesFolder + '/' + room.Photo_Path;
-            NumberPlaces = room.NumberPlaces.ToString();
-            Price = room.Price.ToString();
+            NumberPlaces = "Количество мест: " + room.NumberPlaces.ToString();
+            Price = "Стоимость: " + room.Price.ToString() + "$";
             Description = room.Description;
         }
     }
