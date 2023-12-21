@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class ServiceService : IServiceService
+    public class AdditionService : IAdditionService
     {
         private IDbRepos db;
-        public ServiceService(IDbRepos db)
+        public AdditionService(IDbRepos db)
         {
             this.db = db;
         }
-        public ServiceDTO GetService(int id)
+        public AdditionDTO GetAddition(int id)
         {
-            return new ServiceDTO(db.Services.GetItem(id));
+            return new AdditionDTO(db.Additions.GetItem(id));
         }
 
-        public List<ServiceDTO> GetServices()
+        public List<AdditionDTO> GetAdditions()
         {
-            return db.Services.GetList().Select(x => new ServiceDTO(x)).ToList();
+            return db.Additions.GetList().Select(x => new AdditionDTO(x)).ToList();
         }
     }
 }

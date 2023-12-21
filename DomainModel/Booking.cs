@@ -12,7 +12,7 @@ namespace DomainModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Booking()
         {
-            BookingService = new HashSet<BookingService>();
+            BookingAddition = new HashSet<BookingAddition>();
             Review = new HashSet<Review>();
         }
 
@@ -43,7 +43,7 @@ namespace DomainModel
         public virtual PaymentStatus PaymentStatus { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BookingService> BookingService { get; set; }
+        public virtual ICollection<BookingAddition> BookingAddition { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Review { get; set; }

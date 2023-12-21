@@ -48,10 +48,7 @@ namespace BLL.Services
 
         public double GetBookingPrice(DateTime checkInDate, DateTime checkOutDate, double price, int[] services_id)
         {
-            //if (checkInDate >= checkOutDate || checkInDate < DateTime.Now)
-            //{
-            //    return -1;
-            //}
+
             int numberOfNights = (int)(checkOutDate - checkInDate).TotalDays;
 
             double totalNightPrice = numberOfNights * price;
@@ -59,7 +56,7 @@ namespace BLL.Services
             // Рассчитываем стоимость дополнительных услуг
             double totalAdditionalServicePrice = GetTotalAdditionalServicePrice(services_id);
 
-            return totalAdditionalServicePrice + totalNightPrice;
+            return totalAdditionalServicePrice * numberOfNights + totalNightPrice;
         }
 
         public void Update(BookingDTO dto)
@@ -72,7 +69,7 @@ namespace BLL.Services
             double total = 0;
             foreach(int id in services_id)
             {
-                var service = db.Services.GetItem(id);
+                var service = db.Additions.GetItem(id);
                 if (service == null)
                     continue;
                 total += service.Price;

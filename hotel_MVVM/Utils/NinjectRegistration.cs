@@ -13,8 +13,8 @@ namespace hotel_MVVM.Utils
             Bind<IUserService>().To<UserService>();
             Bind<IClientService>().To<ClientService>();
             Bind<IBookingService>().To<BookingService>();
-            Bind<IServiceService>().To<ServiceService>();
-            Bind<IServiceBookingService>().To<ServiceBookingService>();
+            Bind<IAdditionService>().To<AdditionService>();
+            Bind<IBookingAddition>().To<BookingAdditionService>();
         }
     }
 }

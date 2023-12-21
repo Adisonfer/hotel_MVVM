@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class ServiceReposSQL : IRepository<Service>
+    public class AdditionReposSQL : IRepository<Addition>
     {
         private DataContext db;
-        public ServiceReposSQL(DataContext db)
+        public AdditionReposSQL(DataContext db)
         {
             this.db = db;
         }
 
-        public void Create(Service item)
+        public void Create(Addition item)
         {
             throw new NotImplementedException();
         }
@@ -26,17 +26,17 @@ namespace DAL.Repository
             throw new NotImplementedException();
         }
 
-        public Service GetItem(int id)
+        public Addition GetItem(int id)
         {
-            return db.Service.Find(id);
+            return db.Addition.Find(id);
         }
 
-        public List<Service> GetList()
+        public List<Addition> GetList()
         {
-            return db.Service.ToList();
+            return db.Addition.ToList();
         }
 
-        public void Update(Service item)
+        public void Update(Addition item)
         {
             throw new NotImplementedException();
         }

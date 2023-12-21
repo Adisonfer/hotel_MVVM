@@ -14,6 +14,8 @@ namespace BLL.Services
             this.db = db;
         }
 
+        public ClientDTO CurrentClient { get; set;}
+
         public List<ClientDTO> GetAllClients()
         {
             return db.Clients.GetList().Select(i => new ClientDTO(i)).ToList();

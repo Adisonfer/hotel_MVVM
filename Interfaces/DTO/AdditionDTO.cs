@@ -2,17 +2,17 @@
 
 namespace Interfaces.DTO
 {
-    public class ServiceDTO
+    public class AdditionDTO
     {
         public int ID { get; set; }
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
         public double Price { get; set; }
 
-        public ServiceDTO() { }
-        public ServiceDTO(Service service)
+        public AdditionDTO() { }
+        public AdditionDTO(Addition service)
         {
             ID = service.ID;
-            ServiceName = service.ServiceName;
+            Name = service.Name;
             Price = service.Price;
         }
     }

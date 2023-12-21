@@ -43,10 +43,10 @@
   <ItemGroup>
     <Compile Include="DTO\Admin.cs" />
     <Compile Include="DTO\Booking.cs" />
-    <Compile Include="DTO\BookingServiceDto.cs" />
+    <Compile Include="DTO\BookingAdditionDto.cs" />
     <Compile Include="DTO\Client.cs" />
     <Compile Include="DTO\Room.cs" />
-    <Compile Include="DTO\ServiceDTO.cs" />
+    <Compile Include="DTO\AdditionDTO.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IDbRepos.cs" />
@@ -56,8 +56,8 @@
     <Compile Include="Services\IBookingService.cs" />
     <Compile Include="Services\IClientService.cs" />
     <Compile Include="Services\IRoomService.cs" />
-    <Compile Include="Services\IServiceBookingService.cs" />
-    <Compile Include="Services\IServiceService.cs" />
+    <Compile Include="Services\IBookingAddition.cs" />
+    <Compile Include="Services\IAdditionService.cs" />
     <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <ItemGroup />

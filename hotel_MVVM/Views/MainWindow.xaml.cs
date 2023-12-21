@@ -26,11 +26,11 @@ namespace hotel_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IRoomService roomService)
+        public MainWindow(IRoomService roomService, IClientService clientService)
         {
             InitializeComponent();
 
-            var loginViewModel = new MainViewModel(this, roomService);
+            var loginViewModel = new MainViewModel(this, roomService, clientService);
             this.DataContext = loginViewModel;
         }
     }

@@ -1,4 +1,5 @@
-﻿using hotel_MVVM.Infrastructure.Commands;
+﻿using BLL.Services;
+using hotel_MVVM.Infrastructure.Commands;
 using hotel_MVVM.Models;
 using hotel_MVVM.ViewModels.Base;
 using hotel_MVVM.Views;
@@ -17,6 +18,7 @@ namespace hotel_MVVM.ViewModels
     {
         private List<RoomModel> _rooms;
         private readonly IRoomService _roomService;
+        private readonly IClientService _clientService;
         private readonly MainWindow _wnd;
         private ICommand _bookCommand;
         private ICommand _searchCommand;
@@ -61,9 +63,10 @@ namespace hotel_MVVM.ViewModels
             }
         }
 
-        public MainViewModel(MainWindow wnd, IRoomService roomService)
+        public MainViewModel(MainWindow wnd, IRoomService roomService, IClientService clientService)
         {
             _roomService = roomService;
+            _clientService = clientService;
             StartDate = DateTime.Now.AddDays(1).Date;
             EndDate = DateTime.Now.AddDays(2).Date;
             StartDate = StartDate.Date.AddHours(12);
@@ -88,7 +91,7 @@ namespace hotel_MVVM.ViewModels
                 MessageBox.Show("Вы не можете забронировать номер на прошедшие даты или на сегодняшний день.");
                 return;
             }
-            BookingWindow bookingWindow = new BookingWindow(StartDate, EndDate, roomId);
+            BookingWindow bookingWindow = new BookingWindow(StartDate, EndDate, roomId, _clientService);
             bookingWindow.Owner = _wnd;
             bookingWindow.ShowDialog();
         }

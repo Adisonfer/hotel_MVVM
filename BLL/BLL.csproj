@@ -46,8 +46,8 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\ClientService.cs" />
     <Compile Include="Services\RoomService.cs" />
-    <Compile Include="Services\ServiceBookingService.cs" />
-    <Compile Include="Services\ServiceService.cs" />
+    <Compile Include="Services\BookingAdditionService.cs" />
+    <Compile Include="Services\AdditionService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

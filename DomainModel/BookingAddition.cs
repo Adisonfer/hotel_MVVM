@@ -7,16 +7,16 @@ namespace DomainModel
     using System.Data.Entity.Spatial;
 
     [Table("BookingService")]
-    public partial class BookingService
+    public partial class BookingAddition
     {
         public int ID { get; set; }
 
         public int BookingID { get; set; }
 
-        public int ServiceID { get; set; }
+        public int AdditionID { get; set; }
 
         public virtual Booking Booking { get; set; }
 
-        public virtual Service Service { get; set; }
+        public virtual Addition Addition { get; set; }
     }
 }

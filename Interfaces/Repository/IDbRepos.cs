@@ -10,8 +10,8 @@ namespace Intarfaces.Repository
         IRepository<Client> Clients { get; }
         IRepository<Administrator> Administrators { get; }
         IRepository<Booking> Bookings { get; }
-        IRepository<Service> Services { get; }
-        IRepository<BookingService> BookingsServices { get; }
+        IRepository<Addition> Additions { get; }
+        IRepository<BookingAddition> BookingAdditions { get; }
         IFreeRoomsRepository FreeRooms { get; }
 
         void Save();

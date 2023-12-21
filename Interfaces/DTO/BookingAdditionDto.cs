@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Interfaces.DTO
 {
-    public class BookingServiceDTO
+    public class BookingAdditionDTO
     {
         public int ID { get; set; }
-        public int ServiceID { get; set; }
+        public int AdditionID { get; set; }
         public int BookingID { get; set; }
 
-        public BookingServiceDTO() { }
-        public BookingServiceDTO(BookingService service)
+        public BookingAdditionDTO() { }
+        public BookingAdditionDTO(BookingAddition service)
         {
             ID = service.ID;
-            ServiceID = service.ServiceID;
+            AdditionID = service.AdditionID;
             BookingID = service.BookingID;
         }
     }

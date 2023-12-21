@@ -60,6 +60,7 @@ namespace hotel_MVVM.ViewModels
                     {
                         if (client.UserID == user.ID)
                         {
+                            _clientService.CurrentClient = client;
                             _window.OpenNextWindow(false);
                             break;
                         }

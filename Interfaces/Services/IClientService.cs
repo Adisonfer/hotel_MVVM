@@ -10,5 +10,6 @@ namespace Interfaces.Services
     public interface IClientService
     {
         List<ClientDTO> GetAllClients();
+        ClientDTO CurrentClient { get; set; }
     }
 }

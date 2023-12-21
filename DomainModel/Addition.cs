@@ -6,24 +6,24 @@ namespace DomainModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Service")]
-    public partial class Service
+    [Table("Addition")]
+    public partial class Addition
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Service()
+        public Addition()
         {
-            BookingService = new HashSet<BookingService>();
+            BookingAddition = new HashSet<BookingAddition>();
         }
 
         public int ID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
 
         public double Price { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BookingService> BookingService { get; set; }
+        public virtual ICollection<BookingAddition> BookingAddition { get; set; }
     }
 }

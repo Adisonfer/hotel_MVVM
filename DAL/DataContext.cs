@@ -15,18 +15,18 @@ namespace DAL
 
         public virtual DbSet<Administrator> Administrator { get; set; }
         public virtual DbSet<Booking> Booking { get; set; }
-        public virtual DbSet<BookingService> BookingService { get; set; }
+        public virtual DbSet<BookingAddition> BookingAddition { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<PaymentStatus> PaymentStatus { get; set; }
         public virtual DbSet<Review> Review { get; set; }
         public virtual DbSet<Room> Room { get; set; }
-        public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<Addition> Addition { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Booking>()
-                .HasMany(e => e.BookingService)
+                .HasMany(e => e.BookingAddition)
                 .WithRequired(e => e.Booking)
                 .WillCascadeOnDelete(false);
 
@@ -78,13 +78,13 @@ namespace DAL
                 .WithRequired(e => e.Room)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Service>()
-                .Property(e => e.ServiceName)
+            modelBuilder.Entity<Addition>()
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Service>()
-                .HasMany(e => e.BookingService)
-                .WithRequired(e => e.Service)
+            modelBuilder.Entity<Addition>()
+                .HasMany(e => e.BookingAddition)
+                .WithRequired(e => e.Addition)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()

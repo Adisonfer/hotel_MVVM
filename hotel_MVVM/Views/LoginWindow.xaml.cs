@@ -33,7 +33,7 @@ namespace hotel_MVVM.Views
             if (admin)
                 window = new AdminWindow(roomService);
             else
-                window = new MainWindow(roomService);
+                window = new MainWindow(roomService, clientService);
             window.Show();
             this.Close();
         }

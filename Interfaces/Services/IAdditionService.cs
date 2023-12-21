@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Interfaces.Services
 {
-    public interface IServiceBookingService
+    public interface IAdditionService
     {
-        List<BookingServiceDTO> GetBookingServices(int id);
+        List<AdditionDTO> GetAdditions();
+        AdditionDTO GetAddition(int id);
     }
 }
