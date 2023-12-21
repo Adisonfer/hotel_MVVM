@@ -4,8 +4,6 @@ using hotel_MVVM.Views;
 using Interfaces.DTO;
 using Interfaces.Services;
 using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace hotel_MVVM.ViewModels

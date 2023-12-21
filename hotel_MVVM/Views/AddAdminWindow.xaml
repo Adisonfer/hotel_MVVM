@@ -34,7 +34,7 @@
                 <!-- Количество человек -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Количество человек:" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                    <ComboBox SelectedValue="{Binding Capacity}" SelectedValuePath="Content" Width="100">
+                    <ComboBox SelectedValue="{Binding RoomCapacity}" SelectedValuePath="Content" Width="100">
                         <ComboBoxItem Content="1"/>
                         <ComboBoxItem Content="2"/>
                         <ComboBoxItem Content="3"/>

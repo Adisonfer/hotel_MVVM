@@ -1,10 +1,12 @@
 ﻿using hotel_MVVM.Utils;
 using hotel_MVVM.ViewModels;
+using hotel_MVVM.Views;
 using Interfaces.Services;
 using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +30,7 @@ namespace hotel_MVVM
         {
             InitializeComponent();
 
-            var loginViewModel = new MainViewModel(roomService);
+            var loginViewModel = new MainViewModel(this, roomService);
             this.DataContext = loginViewModel;
         }
     }

@@ -6,46 +6,85 @@
         xmlns:local="clr-namespace:hotel_MVVM.Views"
         mc:Ignorable="d"
         Title="BookingWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#82746F"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4F433E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
+
                 <!-- Left Column: Image -->
-                <Image Stretch="UniformToFill"/>
+                <Image Source="{Binding PhotoName}" Stretch="UniformToFill" />
 
                 <!-- Right Column: Reservation Details -->
-                <StackPanel Margin="10" Grid.Column="1">
-                    <TextBlock Text="Room Name" FontSize="20" FontWeight="Bold"/>
-                    <TextBlock Text="Capacity: 2 people" FontSize="20" Margin="5,8"/>
-                    <TextBlock Text="Cost: $100" FontSize="20" Margin="5,8"/>
-                    <TextBlock Text="Booking Dates: 01/01/2024 - 01/05/2024" FontSize="20" Margin="5,8"/>
-
+                <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock Text="{Binding NameRoom}" FontSize="30" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Capacity}" FontSize="20" Margin="0,8"/>
+                    <TextBlock Text="{Binding Price}" FontSize="20" Margin="0,8"/>
+                    <TextBlock Text="{Binding Date}" FontSize="20" Margin="0,8"/>
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="1" Margin="10">
+
+            <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <StackPanel>
                     <!-- Room Description -->
-                    <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" FontSize="18">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Fusce tincidunt justo eu velit efficitur, ut congue urna fermentum.
-                    </TextBlock>
+                    <TextBlock Text="{Binding Description}" Margin="0,10,0,20" FontSize="18"/>
 
                     <!-- Services -->
                     <ItemsControl ItemsSource="{Binding Services}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" />
+                                <CheckBox Command="{Binding DataContext.ToggleServiceCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                          CommandParameter="{Binding ID}">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding ServiceName}" FontSize="18" />
+                                            <TextBlock Text="{Binding Price, StringFormat=' - {0:C}'}" FontSize="18"/>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Button Content="Pay Now" Width="100" Height="30" Margin="0,20,0,0" HorizontalAlignment="Right"/>
+
+                    <Button Content="Pay Now" 
+                            Width="130" Height="40" 
+                            Margin="0,20,0,0" 
+                            HorizontalAlignment="Right"
+                            Style="{StaticResource CustomButtonStyle}" 
+                            Command="{Binding PayCommand}"/>
                 </StackPanel>
             </Grid>
         </Grid>

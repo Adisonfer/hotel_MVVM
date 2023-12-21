@@ -2,6 +2,7 @@
 using Intarfaces.Repository;
 using Interfaces.DTO;
 using Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,7 +33,17 @@ namespace BLL.Services
         {
             return db.Rooms.GetList().Select(i => new RoomDTO(i)).ToList();
         }
-        
+
+        public List<RoomDTO> GetFreeRooms(DateTime checkInDate, DateTime chechOutDate, int capacity)
+        {
+            return db.FreeRooms.GetFreeRooms(checkInDate, chechOutDate, capacity).ToList();
+        }
+
+        public RoomDTO GetRoom(int roomId)
+        {
+            return new RoomDTO(db.Rooms.GetItem(roomId));
+        }
+
         public void Save()
         {
             db.Save();

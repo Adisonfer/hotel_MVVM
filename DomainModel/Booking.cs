@@ -32,6 +32,8 @@ namespace DomainModel
 
         public int? AdministratorID { get; set; }
 
+        public double? Price { get; set; }
+
         public virtual Administrator Administrator { get; set; }
 
         public virtual Client Client { get; set; }

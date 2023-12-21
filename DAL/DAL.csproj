@@ -54,9 +54,13 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminReposSQL.cs" />
+    <Compile Include="Repository\BookingReposSQL.cs" />
+    <Compile Include="Repository\BookingServiceReposSQL.cs" />
     <Compile Include="Repository\ClientReposSQL.cs" />
     <Compile Include="Repository\DbReposSQL.cs" />
+    <Compile Include="Repository\FreeRoomsReposSQL.cs" />
     <Compile Include="Repository\RoomReposSQL.cs" />
+    <Compile Include="Repository\ServiceReposSQL.cs" />
     <Compile Include="Repository\UserReposSQL.cs" />
   </ItemGroup>
   <ItemGroup />

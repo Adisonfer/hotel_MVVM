@@ -1,6 +1,7 @@
 ﻿using hotel_MVVM.Infrastructure.Commands;
 using hotel_MVVM.Models;
 using hotel_MVVM.ViewModels.Base;
+using hotel_MVVM.Views;
 using Interfaces.DTO;
 using Interfaces.Services;
 using System;
@@ -16,26 +17,61 @@ namespace hotel_MVVM.ViewModels
     {
         private List<RoomModel> _rooms;
         private readonly IRoomService _roomService;
-        public ICommand BookCommand { get; }
+        private readonly MainWindow _wnd;
+        private ICommand _bookCommand;
+        private ICommand _searchCommand;
+        private int _roomCapacity;
+
+        public int RoomCapacity
+        {
+            get => _roomCapacity;
+            set
+            {
+                if (!Set(ref _roomCapacity, value)) return;
+            }
+        }
+
+        public ICommand BookCommand
+        {
+            get { return _bookCommand; }
+            set
+            {
+                if (!Set(ref _bookCommand, value)) return;
+            }
+        }
+
+        public ICommand SearchCommand
+        {
+            get { return _searchCommand; }
+            set
+            {
+                if (!Set(ref _searchCommand, value)) return;
+            }
+        }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         public List<RoomModel> Rooms
         {
-            get => ConvertDataRoomView(_roomService.GetAllRooms());
+            get => _rooms;
             set
             {
                 if (!Set(ref _rooms, value)) return;
             }
         }
 
-        public MainViewModel(IRoomService roomService)
+        public MainViewModel(MainWindow wnd, IRoomService roomService)
         {
             _roomService = roomService;
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
+            StartDate = DateTime.Now.AddDays(1).Date;
+            EndDate = DateTime.Now.AddDays(2).Date;
+            StartDate = StartDate.Date.AddHours(12);
+            EndDate = EndDate.Date.AddHours(12);
             BookCommand = new RelayCommand(OnBook);
+            SearchCommand = new RelayCommand(SearchRooms);
+            //_rooms = ConvertDataRoomView(_roomService.GetAllRooms());
+            _wnd = wnd;
         }
 
         private List<RoomModel> ConvertDataRoomView(List<RoomDTO> rooms)
@@ -47,7 +83,27 @@ namespace hotel_MVVM.ViewModels
         {
             int roomId = (int)parameter;
 
+            if (!checkDate(StartDate, EndDate))
+            {
+                MessageBox.Show("Вы не можете забронировать номер на прошедшие даты или на сегодняшний день.");
+                return;
+            }
+            BookingWindow bookingWindow = new BookingWindow(StartDate, EndDate, roomId);
+            bookingWindow.Owner = _wnd;
+            bookingWindow.ShowDialog();
         }
 
+        private void SearchRooms(object parameter)
+        {
+            Rooms = ConvertDataRoomView(_roomService.GetFreeRooms(StartDate, EndDate, RoomCapacity));
+        }
+
+        private bool checkDate(DateTime checkInDate, DateTime checkOutDate)
+        {
+            if (DateTime.Now > checkInDate || DateTime.Now > checkOutDate ||
+                StartDate >= checkOutDate || (int)(checkOutDate - checkInDate).TotalDays > 30)
+                return false;
+            return true;
+        }
     }
 }

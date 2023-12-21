@@ -15,15 +15,16 @@ namespace hotel_MVVM.Models
         public string Capacity { get; set; }
         public string Price { get; set; }
         public string Description { get; set; }
+        public int RoomId { get; set; }
 
         public RoomModel(RoomDTO room)
         {
             string imagesFolder = Path.Combine(Directory.GetCurrentDirectory(), "Images");
-
+            RoomId = room.ID;
             RoomName = room.RoomName;
             PhotoName = imagesFolder + '/' + room.PhotoName;
             Capacity = "Количество мест: " + room.Capacity.ToString();
-            Price = "Стоимость: " + room.Price.ToString() + "$";
+            Price = "Стоимость: " + room.Price.ToString() + "$ per night";
             Description = room.Description;
         }
     }

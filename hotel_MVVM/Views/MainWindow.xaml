@@ -32,6 +32,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
     </Window.Resources>
     <DockPanel Margin="20, 0">
         <Grid>
@@ -113,13 +114,41 @@
                         </DatePicker>
                     </StackPanel>
                 </Grid>
-                <Button Grid.Column="1" Style="{StaticResource CustomButtonStyle}" 
-                        Content="Person"
-                        Height="39"/>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Колонка для TextBlock -->
+                        <ColumnDefinition Width="Auto"/>
+                        <!-- Колонка для ComboBox -->
+                        <!-- Добавьте еще необходимые колонки, если есть -->
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Количество человек:"
+                               VerticalAlignment="Center"
+                               Margin="0,0,10,0"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+
+                    <ComboBox Grid.Column="1"  SelectedValue="{Binding RoomCapacity}"
+                              SelectedValuePath="Content"
+                              Width="60" Height="30"
+                              HorizontalAlignment="Left">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                    </ComboBox>
+
+                    <!-- Добавьте другие элементы управления с использованием Grid.Column, если необходимо -->
+                </Grid>
+
+
 
                 <Button Grid.Column="2" Style="{StaticResource CustomButtonStyle}"
-                        Content="Price"
-                        Height="39"/>
+                        Content="Search"
+                        Height="39"
+                        Command="{Binding SearchCommand}"/>
 
             </Grid>
             <Grid Grid.Row="3" Margin="0,5" HorizontalAlignment="Stretch">
@@ -156,7 +185,9 @@
                                                     Width="170"
                                                     Height="25"
                                                     FontSize="18"
-                                                    HorizontalAlignment="Right"/>
+                                                    HorizontalAlignment="Right"
+                                                    Command="{Binding DataContext.BookCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"
+                                                    CommandParameter="{Binding RoomId}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>

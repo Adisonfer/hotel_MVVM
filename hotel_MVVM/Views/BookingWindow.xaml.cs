@@ -1,4 +1,8 @@
-﻿using System;
+﻿using hotel_MVVM.ViewModels.Base;
+using hotel_MVVM.ViewModels;
+using Interfaces.Services;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +18,21 @@ using System.Windows.Shapes;
 
 namespace hotel_MVVM.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для BookingWindow.xaml
-    /// </summary>
     public partial class BookingWindow : Window
     {
-        public BookingWindow()
+        BookingViewModel viewModel;
+        IRoomService roomService = App.Kernel.Get<IRoomService>();
+        IBookingService bookingService = App.Kernel.Get<IBookingService>();
+        IServiceService serviceService = App.Kernel.Get<IServiceService>();
+        IServiceBookingService serviceBookingService = App.Kernel.Get<IServiceBookingService>();
+
+        public BookingWindow(DateTime checkInDate, DateTime checkOutDate, int roomId)
         {
             InitializeComponent();
+            viewModel = new BookingViewModel(roomService, bookingService,
+               serviceService, serviceBookingService,
+                checkInDate,  checkOutDate, roomId);
+            DataContext = viewModel;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Interfaces.DTO
         public int RoomID { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
+        public double? Price { get; set; }
         public int? PaymentStatusID { get; set; }
         public int? AdministratorID { get; set; }
 
@@ -21,6 +22,7 @@ namespace Interfaces.DTO
             RoomID = booking.RoomID;
             CheckInDate = booking.CheckInDate;
             CheckOutDate = booking.CheckOutDate;
+            Price = booking.Price;
             PaymentStatusID = booking.PaymentStatusID;
             AdministratorID = booking.AdministratorID;
         }
