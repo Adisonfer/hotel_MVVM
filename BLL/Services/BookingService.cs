@@ -18,22 +18,25 @@ namespace BLL.Services
             this.db = db;
         }
 
-        public bool Create(BookingDTO booking)
+        public int Create(BookingDTO booking)
         {
             if (booking.CheckInDate >= booking.CheckOutDate
                 || booking.CheckInDate < DateTime.Now)
-                return false;
-            db.Bookings.Create(new Booking
+                return -1;
+
+            Booking newBooking = new Booking
             {
                 ClientID = booking.ClientID,
                 RoomID = booking.RoomID,
+                Price = booking.Price,
                 CheckInDate = booking.CheckInDate,
                 CheckOutDate = booking.CheckOutDate,
                 PaymentStatusID = booking.PaymentStatusID,
                 AdministratorID = booking.AdministratorID,
-            });
+            };
+            db.Bookings.Create(newBooking);
             db.Save();
-            return true;
+            return newBooking.ID;
         }
 
         public List<BookingDTO> GetAllBooking()

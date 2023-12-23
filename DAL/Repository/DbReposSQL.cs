@@ -14,6 +14,7 @@ namespace DAL.Repository
         private BookingReposSQL bookingRepos;
         private AdditionReposSQL serviceRepos;
         private FreeRoomsReposSQL freeRoomsRepos;
+        private BookingAdditionReposSQL bookingAdditionRepos;
 
         public DbReposSQL()
         {
@@ -79,7 +80,15 @@ namespace DAL.Repository
             }
         }
 
-        public IRepository<BookingAddition> BookingAdditions => throw new System.NotImplementedException();
+        public IRepository<BookingAddition> BookingAdditions
+        {
+            get
+            {
+                if (bookingAdditionRepos == null)
+                    bookingAdditionRepos = new BookingAdditionReposSQL(db);
+                return bookingAdditionRepos;
+            }
+        }
 
         public IFreeRoomsRepository FreeRooms
         {

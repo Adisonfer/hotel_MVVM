@@ -25,13 +25,13 @@ namespace hotel_MVVM.Views
         IBookingService bookingService = App.Kernel.Get<IBookingService>();
         IAdditionService additionService = App.Kernel.Get<IAdditionService>();
         IBookingAddition serviceBookingService = App.Kernel.Get<IBookingAddition>();
-
-        public BookingWindow(DateTime checkInDate, DateTime checkOutDate, int roomId, IClientService clientService)
+        public BookingWindow(Action updateRooms, DateTime checkInDate, DateTime checkOutDate, int roomId, IClientService clientService)
         {
             InitializeComponent();
-            viewModel = new BookingViewModel(roomService, bookingService,
+            viewModel = new BookingViewModel(this, roomService, bookingService,
                additionService, serviceBookingService, clientService,
                 checkInDate,  checkOutDate, roomId);
+            viewModel.UpdateRooms = updateRooms;
             DataContext = viewModel;
         }
     }

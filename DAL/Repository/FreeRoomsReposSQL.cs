@@ -19,10 +19,14 @@ namespace DAL.Repository
         public List<RoomDTO> GetFreeRooms(DateTime checkInDate, DateTime checkOutDate, int capacity)
         {
             var freeRooms = from room in db.Room
-                            where room.Capacity == capacity &&
+                            where room.Capacity == capacity && room.Availability == true &&
                                   !db.Booking.Any(booking =>
                                       booking.RoomID == room.ID &&
-                                      (checkInDate < booking.CheckOutDate && checkOutDate > booking.CheckInDate)
+                                      ((
+                                          (checkInDate > booking.CheckInDate && checkInDate < booking.CheckOutDate) ||
+                                          (checkOutDate > booking.CheckInDate && checkOutDate < booking.CheckOutDate)
+                                      ) ||
+                                      booking.PaymentStatusID == 3)
                                   )
                             select new RoomDTO
                             {
@@ -37,5 +41,6 @@ namespace DAL.Repository
 
             return freeRooms.ToList();
         }
+
     }
 }

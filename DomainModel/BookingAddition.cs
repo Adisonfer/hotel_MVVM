@@ -6,7 +6,7 @@ namespace DomainModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("BookingService")]
+    [Table("BookingAddition")]
     public partial class BookingAddition
     {
         public int ID { get; set; }

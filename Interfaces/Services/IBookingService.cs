@@ -6,7 +6,7 @@ namespace Interfaces.Services
 {
     public interface IBookingService
     {
-        bool Create(BookingDTO dto);
+        int Create(BookingDTO dto);
         void Update(BookingDTO dto);
         List<BookingDTO> GetAllBooking();
         BookingDTO GetBooking(int id);

@@ -2,6 +2,7 @@
 using hotel_MVVM.Infrastructure.Commands;
 using hotel_MVVM.Models;
 using hotel_MVVM.ViewModels.Base;
+using hotel_MVVM.Views;
 using Interfaces.DTO;
 using Interfaces.Services;
 using System;
@@ -16,6 +17,7 @@ namespace hotel_MVVM.ViewModels
 {
     public class BookingViewModel : ViewModel
     {
+        private BookingWindow _wnd;
         private ICommand _toggleServiceCommand;
         public ICommand ToggleServiceCommand
         {
@@ -75,9 +77,13 @@ namespace hotel_MVVM.ViewModels
             get => _additions;
         }
 
-        public BookingViewModel(IRoomService roomService, IBookingService bookingService,
+        public Action UpdateRooms { get; set; }
+
+
+        public BookingViewModel(BookingWindow wnd, IRoomService roomService, IBookingService bookingService,
             IAdditionService additionService, IBookingAddition serviceBookingService, IClientService clientService,
             DateTime checkInDate, DateTime checkOutDate, int roomId) {
+            _wnd = wnd;
             _additionService = additionService;
             _bookingAdditionService = serviceBookingService;
             _roomService = roomService;
@@ -124,13 +130,21 @@ namespace hotel_MVVM.ViewModels
             booking.Price = _roomPrice;
             booking.RoomID = _room.ID;
             booking.ClientID = _clientService.CurrentClient.ID;
-            _bookingService.Create(booking);
+            booking.PaymentStatusID = 1;
+            int id_booking = _bookingService.Create(booking);
+
+            if (id_booking == -1)
+                return;
 
             BookingAdditionDTO bookingService = new BookingAdditionDTO();
             foreach (var serviceId in _services_id)
             {
-                //bookingService.BookingID = 
+                bookingService.BookingID = id_booking;
+                bookingService.AdditionID = serviceId;
+                _bookingAdditionService.CreateBookingService(bookingService);
             }
+            UpdateRooms?.Invoke();
+            _wnd.Close();
         }
     }
 }
