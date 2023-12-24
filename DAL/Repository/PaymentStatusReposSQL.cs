@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class BookingAdditionReposSQL : IRepository<BookingAddition>
+    public class PaymentStatusReposSQL : IRepository<PaymentStatus>
     {
         private DataContext db;
-        public BookingAdditionReposSQL(DataContext db)
+        public PaymentStatusReposSQL(DataContext db)
         {
             this.db = db;
         }
 
-        public void Create(BookingAddition item)
+        public void Create(PaymentStatus item)
         {
-            db.BookingAddition.Add(item);
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
@@ -26,17 +26,17 @@ namespace DAL.Repository
             throw new NotImplementedException();
         }
 
-        public BookingAddition GetItem(int id)
+        public PaymentStatus GetItem(int id)
+        {
+            return db.PaymentStatus.Find(id);
+        }
+
+        public List<PaymentStatus> GetList()
         {
             throw new NotImplementedException();
         }
 
-        public List<BookingAddition> GetList()
-        {
-            return db.BookingAddition.ToList();
-        }
-
-        public void Update(BookingAddition item)
+        public void Update(PaymentStatus item)
         {
             throw new NotImplementedException();
         }

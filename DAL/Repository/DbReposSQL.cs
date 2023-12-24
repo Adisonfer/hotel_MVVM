@@ -15,6 +15,8 @@ namespace DAL.Repository
         private AdditionReposSQL serviceRepos;
         private FreeRoomsReposSQL freeRoomsRepos;
         private BookingAdditionReposSQL bookingAdditionRepos;
+        private BookingRoomsReposSQL bookingRoomsReposSQL; 
+        private PaymentStatusReposSQL paymentStatusRepos;
 
         public DbReposSQL()
         {
@@ -98,6 +100,25 @@ namespace DAL.Repository
                 if (freeRoomsRepos == null)
                     freeRoomsRepos = new FreeRoomsReposSQL(db);
                 return freeRoomsRepos;
+            }
+        }
+        public IBookingRooms BookingRooms
+        {
+            get
+            {
+                if (bookingRoomsReposSQL == null)
+                    bookingRoomsReposSQL = new BookingRoomsReposSQL(db);
+                return bookingRoomsReposSQL;
+            }
+        }
+
+        public IRepository<PaymentStatus> PaymentStatus
+        {
+            get
+            {
+                if (paymentStatusRepos == null)
+                    paymentStatusRepos = new PaymentStatusReposSQL(db);
+                return paymentStatusRepos;
             }
         }
 

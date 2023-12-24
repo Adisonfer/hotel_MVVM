@@ -11,7 +11,7 @@ namespace Interfaces.DTO
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public double? Price { get; set; }
-        public int? PaymentStatusID { get; set; }
+        public int PaymentStatusID { get; set; }
         public int? AdministratorID { get; set; }
 
         public BookingDTO() { }

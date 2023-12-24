@@ -34,6 +34,11 @@ namespace BLL.Services
             return db.Rooms.GetList().Select(i => new RoomDTO(i)).ToList();
         }
 
+        public List<BookingRoomReport> GetBookingRooms(int id_client)
+        {
+            return db.BookingRooms.GetBookingRooms(id_client);
+        }
+
         public List<RoomDTO> GetFreeRooms(DateTime checkInDate, DateTime chechOutDate, int capacity)
         {
             return db.FreeRooms.GetFreeRooms(checkInDate, chechOutDate, capacity).ToList();

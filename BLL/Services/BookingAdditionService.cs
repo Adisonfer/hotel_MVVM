@@ -26,7 +26,7 @@ namespace BLL.Services
 
         public List<BookingAdditionDTO> GetBookingServices(int id)
         {
-            return db.BookingAdditions.GetList().Select(i => new BookingAdditionDTO(i)).Where(i => i.ID == id).ToList();
+            return db.BookingAdditions.GetList().Select(i => new BookingAdditionDTO(i)).Where(i => i.BookingID == id).ToList();
         }
     }
 }

@@ -1,23 +1,8 @@
-﻿using hotel_MVVM.Utils;
-using hotel_MVVM.ViewModels;
+﻿using hotel_MVVM.ViewModels;
 using hotel_MVVM.Views;
 using Interfaces.Services;
-using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace hotel_MVVM
 {
@@ -26,12 +11,22 @@ namespace hotel_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
+        IRoomService roomService;
+        IClientService clientService;
         public MainWindow(IRoomService roomService, IClientService clientService)
         {
             InitializeComponent();
-
+            this.roomService = roomService;
+            this.clientService = clientService;
             var loginViewModel = new MainViewModel(this, roomService, clientService);
             this.DataContext = loginViewModel;
+        }
+        public void OpenProfileWindow()
+        {
+            ProfileWindow window = new ProfileWindow(this, roomService, clientService);
+
+            window.Show();
+            this.Hide();
         }
     }
 }

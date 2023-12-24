@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_MVVM.Views"
         mc:Ignorable="d"
-        Title="Бронирование" Height="600" Width="800">
+        Title="Бронирование" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="CustomButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#82746F"/>
@@ -46,21 +47,22 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Left Column: Image -->
-                <Image Source="{Binding PhotoName}" Stretch="UniformToFill" />
-
+                <Viewbox MaxWidth="400" MaxHeight="400">
+                    <Image Source="{Binding PhotoName}" Stretch="UniformToFill" />
+                </Viewbox>
                 <!-- Right Column: Reservation Details -->
                 <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <TextBlock Text="{Binding NameRoom}" FontSize="30" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Capacity}" FontSize="20" Margin="0,8"/>
-                    <TextBlock Text="{Binding Price}" FontSize="20" Margin="0,8"/>
-                    <TextBlock Text="{Binding Date}" FontSize="20" Margin="0,8"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding NameRoom}" FontSize="30" FontWeight="Bold"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Capacity}" FontSize="20" Margin="0,8"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Price}" FontSize="20" Margin="0,8"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Date}" FontSize="20" Margin="0,8"/>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <StackPanel>
                     <!-- Room Description -->
-                    <TextBlock Text="{Binding Description}" Margin="0,10,0,20" FontSize="18"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Description}" Margin="0,10,0,20" FontSize="18"/>
 
                     <!-- Services -->
                     <ItemsControl ItemsSource="{Binding Additions}">
@@ -70,7 +72,7 @@
                                           CommandParameter="{Binding ID}">
                                     <CheckBox.Content>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}" FontSize="18" />
+                                            <TextBlock FontFamily="Cascadia Code" Text="{Binding Name}" FontSize="18" />
                                             <TextBlock Text="{Binding Price, StringFormat=' - {0:C}'}" FontSize="18"/>
                                         </StackPanel>
                                     </CheckBox.Content>
@@ -79,7 +81,8 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <Button Content="Pay Now" 
+                    <Button Content="Pay Now"
+                            FontFamily="Cinzel"
                             Width="130" Height="40" 
                             Margin="0,20,0,0" 
                             HorizontalAlignment="Right"

@@ -28,7 +28,7 @@ namespace DomainModel
         [Column(TypeName = "date")]
         public DateTime CheckOutDate { get; set; }
 
-        public int? PaymentStatusID { get; set; }
+        public int PaymentStatusID { get; set; }
 
         public int? AdministratorID { get; set; }
 

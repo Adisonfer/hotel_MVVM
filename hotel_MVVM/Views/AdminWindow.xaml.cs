@@ -36,5 +36,12 @@ namespace hotel_MVVM.Views
             addAdmin.ShowDialog(); // Открывает окно и ждет, пока оно не будет закрыто
             adminViewModel.UpdateData();
         }
+
+        private void btn_LoginWindow_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
     }
 }

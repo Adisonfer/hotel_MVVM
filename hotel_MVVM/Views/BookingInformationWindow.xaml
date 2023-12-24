@@ -1,0 +1,56 @@
+﻿<Window x:Class="hotel_MVVM.Views.BookingInformationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hotel_MVVM.Views"
+        mc:Ignorable="d"
+        Title="BookingInformationWindow" Height="600" Width="800">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Column: Image -->
+                <Viewbox MaxWidth="400" MaxHeight="300">
+                    <Image Source="{Binding PhotoName}" Stretch="UniformToFill" />
+                </Viewbox>
+                <!-- Right Column: Reservation Details -->
+                <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding NameRoom}" FontSize="30" FontWeight="Bold"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Capacity}" FontSize="20" Margin="0,8"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Price}" FontSize="20" Margin="0,8"/>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Date}" FontSize="20" Margin="0,8"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <StackPanel>
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Status}" Margin="0,10,0,10" FontSize="18"/>
+                    <!-- Room Description -->
+                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Description}" Margin="0,10,0,20" FontSize="18"/>
+
+                    <!-- Services -->
+                    <ListBox ItemsSource="{Binding Additions}" Margin="0,10,0,20">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Cascadia Code" Text="{Binding Name}" FontSize="18" />
+                                    <TextBlock Text="{Binding Price, StringFormat=' - {0:C}'}" FontSize="18"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

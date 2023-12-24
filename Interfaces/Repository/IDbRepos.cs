@@ -13,6 +13,8 @@ namespace Intarfaces.Repository
         IRepository<Addition> Additions { get; }
         IRepository<BookingAddition> BookingAdditions { get; }
         IFreeRoomsRepository FreeRooms { get; }
+        IBookingRooms BookingRooms { get; }
+        IRepository<PaymentStatus> PaymentStatus { get; }
 
         void Save();
     }

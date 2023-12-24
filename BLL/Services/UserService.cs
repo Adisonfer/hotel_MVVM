@@ -18,6 +18,11 @@ namespace BLL.Services
             return db.Users.GetList().Select(i => new UserDTO(i)).ToList();
         }
 
+        public UserDTO GetClient(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public UserDTO GetUser(int id)
         {
             return new UserDTO(db.Users.GetItem(id));

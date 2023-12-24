@@ -23,8 +23,8 @@ namespace DAL.Repository
                                   !db.Booking.Any(booking =>
                                       booking.RoomID == room.ID &&
                                       ((
-                                          (checkInDate > booking.CheckInDate && checkInDate < booking.CheckOutDate) ||
-                                          (checkOutDate > booking.CheckInDate && checkOutDate < booking.CheckOutDate)
+                                          (checkInDate >= booking.CheckInDate && checkInDate <= booking.CheckOutDate) ||
+                                          (checkOutDate >= booking.CheckInDate && checkOutDate <= booking.CheckOutDate)
                                       ) ||
                                       booking.PaymentStatusID == 3)
                                   )

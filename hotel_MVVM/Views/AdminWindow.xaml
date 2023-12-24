@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_MVVM.Views"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="600" Width="800">
+        Title="AdminWindow" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl>
             <TabItem Header="Номера">
@@ -20,6 +21,12 @@
                             Height="30" 
                             Margin="5,5" 
                             HorizontalAlignment="Left" Click="btn_CreateWindow_Click"/>
+                    <Button x:Name="btn_LoginWindow"
+                            Content="Выйти" 
+                            Width="120"
+                            Height="30" 
+                            Margin="5,5" 
+                            HorizontalAlignment="Right" Click="btn_LoginWindow_Click"/>
                     <Grid Grid.Row="2">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox ItemsSource="{Binding Rooms}" HorizontalContentAlignment="Stretch">

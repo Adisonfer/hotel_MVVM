@@ -51,6 +51,8 @@ namespace hotel_MVVM.ViewModels
             }
         }
 
+        private DateTime _checkInDate {  get; set; }
+        private DateTime _checkOutDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -63,15 +65,22 @@ namespace hotel_MVVM.ViewModels
             }
         }
 
+        private ICommand _openProfileCommand;
+        public ICommand OpenProfileCommand
+        {
+            get { return _openProfileCommand ?? (_openProfileCommand = new RelayCommand(openProfileWindow)); }
+        }
+
         public MainViewModel(MainWindow wnd, IRoomService roomService, IClientService clientService)
         {
             _roomService = roomService;
             _clientService = clientService;
             StartDate = DateTime.Now.AddDays(1).Date;
+            _checkInDate = StartDate;
             EndDate = DateTime.Now.AddDays(2).Date;
+            _checkOutDate = EndDate;
             BookCommand = new RelayCommand(OnBook);
             SearchCommand = new RelayCommand(SearchRooms);
-            //_rooms = ConvertDataRoomView(_roomService.GetAllRooms());
             _wnd = wnd;
         }
 
@@ -84,7 +93,7 @@ namespace hotel_MVVM.ViewModels
         {
             int roomId = (int)parameter;
        
-            BookingWindow bookingWindow = new BookingWindow(UpdateRooms, StartDate, EndDate, roomId, _clientService);
+            BookingWindow bookingWindow = new BookingWindow(UpdateRooms, _checkInDate, _checkOutDate, roomId, _clientService);
             bookingWindow.Owner = _wnd;
             bookingWindow.ShowDialog();
         }
@@ -96,8 +105,8 @@ namespace hotel_MVVM.ViewModels
 
         private void SearchRooms(object parameter)
         {
-            StartDate = StartDate.Date.AddHours(12);
-            EndDate = EndDate.Date.AddHours(12);
+            _checkInDate = StartDate;
+            _checkOutDate = EndDate;
             if (!checkDate(StartDate, EndDate))
             {
                 MessageBox.Show("Вы не можете забронировать номер на прошедшие даты или на сегодняшний день.");
@@ -112,6 +121,11 @@ namespace hotel_MVVM.ViewModels
                 checkInDate >= checkOutDate || (int)(checkOutDate - checkInDate).TotalDays > 30)
                 return false;
             return true;
+        }
+
+        private void openProfileWindow(object parameter)
+        {
+            _wnd.OpenProfileWindow();
         }
     }
 }

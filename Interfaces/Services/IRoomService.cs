@@ -8,6 +8,7 @@ namespace Interfaces.Services
     {
         List<RoomDTO> GetAllRooms();
         List<RoomDTO> GetFreeRooms(DateTime checkInDate, DateTime chechOutDate, int capacity);
+        List<BookingRoomReport> GetBookingRooms(int id_client);
         void CreateRoom(RoomDTO roomDTO);
         RoomDTO GetRoom(int roomId);
     }

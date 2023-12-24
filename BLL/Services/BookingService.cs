@@ -46,7 +46,7 @@ namespace BLL.Services
 
         public BookingDTO GetBooking(int id)
         {
-            throw new NotImplementedException();
+            return new BookingDTO(db.Bookings.GetItem(id));
         }
 
         public double GetBookingPrice(DateTime checkInDate, DateTime checkOutDate, double price, int[] services_id)

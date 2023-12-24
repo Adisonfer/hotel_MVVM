@@ -56,9 +56,11 @@
     <Compile Include="Repository\AdminReposSQL.cs" />
     <Compile Include="Repository\BookingReposSQL.cs" />
     <Compile Include="Repository\BookingAdditionReposSQL.cs" />
+    <Compile Include="Repository\BookingRoomsReposSQL.cs" />
     <Compile Include="Repository\ClientReposSQL.cs" />
     <Compile Include="Repository\DbReposSQL.cs" />
     <Compile Include="Repository\FreeRoomsReposSQL.cs" />
+    <Compile Include="Repository\PaymentStatusReposSQL.cs" />
     <Compile Include="Repository\RoomReposSQL.cs" />
     <Compile Include="Repository\AdditionReposSQL.cs" />
     <Compile Include="Repository\UserReposSQL.cs" />
