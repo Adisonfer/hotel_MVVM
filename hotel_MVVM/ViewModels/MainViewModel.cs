@@ -53,8 +53,25 @@ namespace hotel_MVVM.ViewModels
 
         private DateTime _checkInDate {  get; set; }
         private DateTime _checkOutDate { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+
+        private DateTime _startDate;
+        public DateTime StartDate
+        {
+            get { return _startDate; }
+            set
+            {
+                if (!Set(ref _startDate, value)) return;
+            }
+        }
+        private DateTime _endTime;
+        public DateTime EndDate
+        {
+            get { return _endTime; }
+            set
+            {
+                if (!Set(ref _endTime, value)) return;
+            }
+        }
 
         public List<RoomModel> Rooms
         {
@@ -107,7 +124,7 @@ namespace hotel_MVVM.ViewModels
         {
             _checkInDate = StartDate;
             _checkOutDate = EndDate;
-            if (!checkDate(StartDate, EndDate))
+            if (!checkDate(_checkInDate, _checkOutDate))
             {
                 MessageBox.Show("Вы не можете забронировать номер на прошедшие даты или на сегодняшний день.");
                 return;

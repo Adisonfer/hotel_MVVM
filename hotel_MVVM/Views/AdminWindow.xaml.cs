@@ -1,5 +1,7 @@
 ﻿using hotel_MVVM.ViewModels;
+using Interfaces.DTO;
 using Interfaces.Services;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,13 @@ namespace hotel_MVVM.Views
     /// </summary>
     public partial class AdminWindow : Window
     {
+        IBookingService bookingService = App.Kernel.Get<IBookingService>();
+        IPaymentStatusService statusService = App.Kernel.Get<IPaymentStatusService>();
         AdminViewWindow adminViewModel;
         public AdminWindow(IRoomService roomService)
         {
             InitializeComponent();
-            adminViewModel = new AdminViewWindow(roomService);
+            adminViewModel = new AdminViewWindow(roomService, bookingService, statusService);
             this.DataContext = adminViewModel;
         }
 

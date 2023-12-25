@@ -64,7 +64,22 @@ namespace BLL.Services
 
         public void Update(BookingDTO dto)
         {
-            throw new NotImplementedException();
+            Booking booking = db.Bookings.GetItem(dto.ID);
+            if (booking == null)
+                return;
+            booking.Price = dto.Price;
+            booking.CheckOutDate = dto.CheckOutDate;
+            booking.CheckInDate = dto.CheckInDate;
+            booking.PaymentStatusID = dto.PaymentStatusID;
+            booking.RoomID = dto.RoomID;
+            booking.ClientID = dto.ClientID;
+            db.Bookings.Update(booking);
+            db.Save();
+        }
+
+        public List<BookingAdminReport> GetAllBookingsReport()
+        {
+            return db.BookingAdminReports.GetBookingAdminReports();
         }
 
         private double GetTotalAdditionalServicePrice(int[] services_id)

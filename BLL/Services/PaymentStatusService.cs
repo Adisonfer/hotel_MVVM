@@ -16,6 +16,12 @@ namespace BLL.Services
         {
             this.db = db;
         }
+
+        public List<PaymentStatusDTO> GetAllPaymentStatuses()
+        {
+            return db.PaymentStatus.GetList().Select(i => new PaymentStatusDTO(i)).ToList();
+        }
+
         public PaymentStatusDTO GetPaymentStatus(int id)
         {
             return new PaymentStatusDTO(db.PaymentStatus.GetItem(id));

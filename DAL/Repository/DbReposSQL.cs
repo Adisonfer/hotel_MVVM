@@ -17,6 +17,7 @@ namespace DAL.Repository
         private BookingAdditionReposSQL bookingAdditionRepos;
         private BookingRoomsReposSQL bookingRoomsReposSQL; 
         private PaymentStatusReposSQL paymentStatusRepos;
+        private BookingAdminReportReposSQL bookingAdminReportRepos;
 
         public DbReposSQL()
         {
@@ -119,6 +120,16 @@ namespace DAL.Repository
                 if (paymentStatusRepos == null)
                     paymentStatusRepos = new PaymentStatusReposSQL(db);
                 return paymentStatusRepos;
+            }
+        }
+
+        public IBookingAdminReportRepository BookingAdminReports
+        {
+            get
+            {
+                if (bookingAdminReportRepos == null)
+                    bookingAdminReportRepos = new BookingAdminReportReposSQL(db);
+                return bookingAdminReportRepos;
             }
         }
 

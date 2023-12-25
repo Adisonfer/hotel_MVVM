@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using Interfaces.Repository;
 using Interfaces.Services;
 using Ninject.Modules;
 

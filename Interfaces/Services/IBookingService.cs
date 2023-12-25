@@ -11,5 +11,6 @@ namespace Interfaces.Services
         List<BookingDTO> GetAllBooking();
         BookingDTO GetBooking(int id);
         double GetBookingPrice(DateTime checkInDate, DateTime checkOutDate, double price, int[] services_id);
+        List<BookingAdminReport> GetAllBookingsReport();
     }
 }

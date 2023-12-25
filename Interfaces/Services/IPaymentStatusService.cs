@@ -10,5 +10,6 @@ namespace Interfaces.Services
     public interface IPaymentStatusService
     {
         PaymentStatusDTO GetPaymentStatus(int id);
+        List<PaymentStatusDTO> GetAllPaymentStatuses();
     }
 }

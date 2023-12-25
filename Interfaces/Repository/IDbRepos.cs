@@ -15,6 +15,7 @@ namespace Intarfaces.Repository
         IFreeRoomsRepository FreeRooms { get; }
         IBookingRooms BookingRooms { get; }
         IRepository<PaymentStatus> PaymentStatus { get; }
+        IBookingAdminReportRepository BookingAdminReports { get; }
 
         void Save();
     }

@@ -54,6 +54,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminReposSQL.cs" />
+    <Compile Include="Repository\BookingAdminReportReposSQL.cs" />
     <Compile Include="Repository\BookingReposSQL.cs" />
     <Compile Include="Repository\BookingAdditionReposSQL.cs" />
     <Compile Include="Repository\BookingRoomsReposSQL.cs" />

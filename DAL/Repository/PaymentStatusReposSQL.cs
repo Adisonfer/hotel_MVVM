@@ -33,7 +33,7 @@ namespace DAL.Repository
 
         public List<PaymentStatus> GetList()
         {
-            throw new NotImplementedException();
+            return db.PaymentStatus.ToList();
         }
 
         public void Update(PaymentStatus item)
