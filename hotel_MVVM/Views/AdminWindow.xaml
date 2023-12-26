@@ -7,44 +7,76 @@
         mc:Ignorable="d"
         Title="AdminWindow" Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#82746F"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4F433E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <TabControl>
             <TabItem Header="Номера">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="865*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="btn_CreateWindow"
                             Content="Добавить комнату" 
-                            Width="120"
+                            Width="250"
                             Height="30" 
-                            Margin="5,5" 
-                            HorizontalAlignment="Left" Click="btn_CreateWindow_Click"/>
+                            Margin="5,10,0,10" 
+                            Style="{StaticResource CustomButtonStyle}" 
+                            HorizontalAlignment="Left" Click="btn_CreateWindow_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="btn_LoginWindow"
                             Content="Выйти" 
                             Width="120"
                             Height="30" 
-                            Margin="5,5" 
-                            HorizontalAlignment="Right" Click="btn_LoginWindow_Click"/>
-                    <Grid Grid.Row="2">
+                       
+                            Style="{StaticResource CustomButtonStyle}"
+                            HorizontalAlignment="Right" Click="btn_LoginWindow_Click" Grid.Column="1"/>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox ItemsSource="{Binding Rooms}" HorizontalContentAlignment="Stretch">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderBrush="Black" 
+                            <ListBox ItemsSource="{Binding Rooms}" HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="Black" 
                                         BorderThickness="1"
                                         HorizontalAlignment="Stretch">
-                                        <Grid Height="150" Cursor="Hand">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="300"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
+                                            <Grid Height="150" Cursor="Hand">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="300"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
 
                                                 <Image Source="{Binding PhotoName}" Height="150" HorizontalAlignment="Left"/>
 
-                                            <StackPanel Grid.Column="2" Cursor="Hand">
-                                                <Label Content="{Binding RoomName}"
+                                                <StackPanel Grid.Column="2" Cursor="Hand">
+                                                    <Label Content="{Binding RoomName}"
                                                    HorizontalAlignment="Right" Margin="2"
                                                    FontSize="20"
                                                    FontFamily="Montserrat"/>
@@ -52,23 +84,24 @@
                                                    HorizontalAlignment="Right" Margin="2"
                                                    FontSize="20"
                                                    FontFamily="Montserrat"/>
-                                                <Label Content="{Binding Price}"
+                                                    <Label Content="{Binding Price}"
                                                    HorizontalAlignment="Right" Margin="2"
                                                    FontSize="20"
                                                    FontFamily="Montserrat"/>
 
-                                                <Button Content="Update"
+                                                    <Button Content="Update"
                                                     Width="170"
                                                     Height="30"
                                                     FontSize="18"
+                                                    Style="{StaticResource CustomButtonStyle}"
                                                     HorizontalAlignment="Right"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </ScrollViewer>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -79,7 +112,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Бронирования">
-                
+
                 <Grid>
                     <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Bookings}" CanUserAddRows="False">
                         <DataGrid.Columns>
